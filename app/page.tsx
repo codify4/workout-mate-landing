@@ -5,10 +5,13 @@ import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, BarChart, Book, BookOpenText, Brain, Calendar, CheckCircle2, ChevronRight, Clock, Dumbbell, Icon, Menu, MessageSquare, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Meteors } from "@/components/magicui/meteors"
+import { Marquee } from "@/components/magicui/marquee"
+import { TestimonialCard } from "@/components/testimonials"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -286,63 +289,14 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 md:py-32 bg-zinc-900">
+      <section id="testimonials" className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <BlurFade className="text-center max-w-3xl mx-auto mb-16" delay={0.2}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Users Say</h2>
-            <p className="text-lg text-white/70">Join thousands of satisfied users who love our app</p>
+            <p className="text-lg text-white/70">Join other users on the same journey as you...</p>
           </BlurFade>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Alex Johnson",
-                role: "Product Manager",
-                content:
-                  "This app has completely transformed how I manage my day. The intuitive interface makes scheduling a breeze.",
-              },
-              {
-                name: "Sarah Williams",
-                role: "Freelance Designer",
-                content:
-                  "As someone who juggles multiple clients, this app has been a lifesaver. I can't imagine working without it now.",
-              },
-              {
-                name: "Michael Chen",
-                role: "Entrepreneur",
-                content:
-                  "The best scheduling app I've ever used. The team collaboration features are particularly impressive.",
-              },
-            ].map((testimonial, index) => (
-              <BlurFade
-                key={index}
-                delay={0.2 + index * 0.1}
-                className={cn("bg-zinc-800 p-8 rounded-3xl", index === 1 ? "md:translate-y-8" : "")}
-              >
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-white/80 mb-6">{testimonial.content}</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-zinc-700 rounded-full overflow-hidden">
-                    <Image
-                      src="/placeholder.svg?height=48&width=48"
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-white/50">{testimonial.role}</div>
-                  </div>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
+          <TestimonialCard />
         </div>
       </section>
 
