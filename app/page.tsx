@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, Calendar, CheckCircle2, ChevronRight, Clock, MessageSquare, Star } from "lucide-react"
+import { ArrowRight, Calendar, CheckCircle2, ChevronRight, Clock, Dumbbell, MessageSquare, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -60,10 +60,10 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-xl bg-red-500 flex items-center justify-center">
-              <Calendar className="h-6 w-6 text-white" />
+            <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center">
+              <Dumbbell className="h-6 w-6 text-black" />
             </div>
-            <span className="font-bold text-xl">Scheduler</span>
+            <span className="font-bold text-xl">Workout Mate</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
@@ -157,12 +157,6 @@ export default function Home() {
                 <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-8">
                   Download App
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="rounded-full border-white/20 text-white hover:bg-white/10 h-12 px-8"
-                >
-                  Learn More
                 </Button>
               </motion.div>
             </motion.div>
@@ -349,30 +343,31 @@ export default function Home() {
             <p className="text-lg text-white/70">Choose the plan that works best for you</p>
           </SectionWrapper>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
               {
-                name: "Basic",
-                price: "Free",
-                features: ["Basic scheduling", "Calendar sync", "Reminders", "Mobile app access"],
-              },
-              {
-                name: "Pro",
+                name: "Monthly",
                 price: "$9.99/mo",
                 popular: true,
                 features: [
-                  "Everything in Basic",
                   "Team collaboration",
                   "Advanced analytics",
                   "Priority support",
                   "Custom integrations",
+                  "Dedicated account manager",
+                  "Custom branding",
+                  "Advanced security",
+                  "API access",
                 ],
               },
               {
-                name: "Enterprise",
-                price: "Custom",
+                name: "Yearly",
+                price: "$39.99/yr",
                 features: [
-                  "Everything in Pro",
+                  "Team collaboration",
+                  "Advanced analytics",
+                  "Priority support",
+                  "Custom integrations",
                   "Dedicated account manager",
                   "Custom branding",
                   "Advanced security",
