@@ -124,9 +124,9 @@ export default function Home() {
         />
 
         <div className="container mx-auto px-4 relative z-10 pt-32">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-center justify-center gap-16 md:gap-24 w-10/12 mx-auto">
             {/* Hero Text */}
-            <motion.div style={{ opacity: heroTextOpacity, y: heroTextY }} className="text-center md:text-left">
+            <motion.div style={{ opacity: heroTextOpacity, y: heroTextY }} className="flex flex-col items-center justify-center text-center md:text-left">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -164,11 +164,47 @@ export default function Home() {
                 y: phoneY,
                 rotateZ: phoneRotate,
               }}
-              className="relative max-w-xs mx-auto md:mx-0 md:ml-auto"
+              className="relative flex flex-row gap-5 mx-auto md:mx-0 md:ml-auto w-full"
             >
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl">
+              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
                 <Image
                   src="/home.png"
+                  alt="App Screenshot"
+                  width={250}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
+                <Image
+                  src="/exercise-library.png"
+                  alt="App Screenshot"
+                  width={250}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
+                <Image
+                  src="/empty-chatbot.png"
+                  alt="App Screenshot"
+                  width={250}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
+                <Image
+                  src="/finished-workouts.png"
+                  alt="App Screenshot"
+                  width={250}
+                  height={500}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
+                <Image
+                  src="/workout-screen.png"
                   alt="App Screenshot"
                   width={250}
                   height={500}
@@ -208,7 +244,7 @@ export default function Home() {
             <p className="text-lg text-white/70">Discover the key functionalities of Workout Mate</p>
           </BlurFade>
 
-          <div className="flex flex-col gap-16 md:gap-24 max-w-4xl mx-auto">
+          <div className="flex flex-col items-center justify-center gap-16 md:gap-24 w-10/12 mx-auto">
             {[
               {
                 imgSrc: "/home.png",
@@ -246,7 +282,7 @@ export default function Home() {
                   )}
                 >
                   <div className="w-full md:w-1/2 flex-shrink-0">
-                    <div className="relative rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-[400px] h-[700px] max-w-xs mx-auto">
+                    <div className="relative rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-[400px] h-[680px] max-w-xs mx-auto">
                       <Image
                         src={feature.imgSrc}
                         alt={feature.title}
