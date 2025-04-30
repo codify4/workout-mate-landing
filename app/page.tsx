@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, Calendar, CheckCircle2, ChevronRight, Clock, Dumbbell, MessageSquare, Star } from "lucide-react"
+import { ArrowRight, BarChart, Book, BookOpenText, Brain, Calendar, CheckCircle2, ChevronRight, Clock, Dumbbell, Icon, Menu, MessageSquare, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-// Import the SectionWrapper component
-import SectionWrapper from "@/components/sections-wrapper"
+import Link from "next/link"
+import { BlurFade } from "@/components/magicui/blur-fade"
+import { Meteors } from "@/components/magicui/meteors"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -67,25 +67,20 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-white/70 hover:text-white">
+            <Link href="#features" className="text-white/70 hover:text-white">
               Features
-            </a>
-            <a href="#testimonials" className="text-white/70 hover:text-white">
+            </Link>
+            <Link href="#testimonials" className="text-white/70 hover:text-white">
               Testimonials
-            </a>
-            <a href="#pricing" className="text-white/70 hover:text-white">
+            </Link>
+            <Link href="#pricing" className="text-white/70 hover:text-white">
               Pricing
-            </a>
-            <Button variant="outline" className="rounded-full text-white border-white/20 hover:bg-white/10">
-              Sign In
-            </Button>
+            </Link>
             <Button className="rounded-full bg-white text-black hover:bg-white/90">Download</Button>
           </div>
 
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <div className="w-6 h-0.5 bg-white mb-1.5"></div>
-            <div className="w-6 h-0.5 bg-white mb-1.5"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
+            <Menu className="h-6 w-6 text-white" />
           </button>
         </div>
 
@@ -98,18 +93,15 @@ export default function Home() {
             className="md:hidden bg-black border-t border-white/10"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <a href="#features" className="text-white/70 hover:text-white py-2">
+              <Link href="#features" className="text-white/70 hover:text-white py-2">
                 Features
-              </a>
-              <a href="#testimonials" className="text-white/70 hover:text-white py-2">
+              </Link>
+              <Link href="#testimonials" className="text-white/70 hover:text-white py-2">
                 Testimonials
-              </a>
-              <a href="#pricing" className="text-white/70 hover:text-white py-2">
+              </Link>
+              <Link href="#pricing" className="text-white/70 hover:text-white py-2">
                 Pricing
-              </a>
-              <Button variant="outline" className="rounded-full w-full text-white border-white/20 hover:bg-white/10">
-                Sign In
-              </Button>
+              </Link>
               <Button className="rounded-full w-full bg-white text-black hover:bg-white/90">Download</Button>
             </div>
           </motion.div>
@@ -117,7 +109,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-screen flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative flex items-center overflow-hidden py-10">
         {/* Decorative circles */}
         <motion.div
           style={{ scale: circle1Scale, opacity: circle1Opacity }}
@@ -206,51 +198,70 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 md:py-32 bg-zinc-900">
+      <section id="features" className="py-20 md:py-32 bg-black">
         <div className="container mx-auto px-4">
-          <SectionWrapper className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
-            <p className="text-lg text-white/70">Everything you need to stay organized and productive</p>
-          </SectionWrapper>
+          <BlurFade className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Features</h2>
+            <p className="text-lg text-white/70">Discover the key functionalities of Workout Mate</p>
+          </BlurFade>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-16 md:gap-24 max-w-4xl mx-auto">
             {[
               {
-                icon: <Calendar className="h-8 w-8 text-red-500" />,
-                title: "Smart Calendar",
-                description: "Intelligent scheduling that adapts to your preferences and habits.",
+                imgSrc: "/home.png",
+                icon: Dumbbell,
+                title: "Workouts",
+                description: "Track your weekly progress, target muscle groups, and view past workouts.",
               },
               {
-                icon: <Clock className="h-8 w-8 text-red-500" />,
-                title: "Time Tracking",
-                description: "Monitor how you spend your time and optimize your productivity.",
+                imgSrc: "/tips.png",
+                icon: BookOpenText,
+                title: "Exercise Library & Tips",
+                description: "Explore a comprehensive exercise library and watch suggestion videos for guidance.",
               },
               {
-                icon: <MessageSquare className="h-8 w-8 text-red-500" />,
-                title: "Team Collaboration",
-                description: "Share schedules and coordinate meetings effortlessly.",
+                imgSrc: "/stats.png",
+                icon: BarChart,
+                title: "Detailed Statistics",
+                description: "Analyze your performance with insightful stats, training focus charts, and a calendar view.",
+              },
+              {
+                imgSrc: "/chatbot.png",
+                icon: Brain,
+                title: "AI Assistant",
+                description: "Get personalized advice on nutrition, workouts, and more from your AI mate.",
               },
             ].map((feature, index) => (
-              <SectionWrapper
+              <BlurFade
                 key={index}
                 delay={0.2 + index * 0.1}
-                className="bg-zinc-800 p-8 rounded-3xl hover:bg-zinc-700 transition-colors"
               >
-                <div className="bg-black w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
-                  {feature.icon}
+                <div
+                  className={cn(
+                    "flex flex-col md:flex-row items-center gap-8 md:gap-12",
+                    index % 2 === 1 ? "md:flex-row-reverse" : "",
+                  )}
+                >
+                  <div className="w-full md:w-1/2 flex-shrink-0">
+                    <div className="relative rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-[400px] h-[700px] max-w-xs mx-auto">
+                      <Image
+                        src={feature.imgSrc}
+                        alt={feature.title}
+                        fill
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full md:w-1/2 text-center md:text-left">
+                    <div className="flex flex-row items-center justify-center md:justify-start gap-2">
+                      <feature.icon color="white" size={28} />
+                      <h3 className="text-2xl md:text-3xl font-bold">{feature.title}</h3>
+                    </div>
+                    <p className="text-lg text-white/70">{feature.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-white/70">{feature.description}</p>
-              </SectionWrapper>
+              </BlurFade>
             ))}
           </div>
-
-          <SectionWrapper className="mt-16 text-center" delay={0.4}>
-            <Button variant="outline" className="rounded-full border-white/20 text-white hover:bg-white/10">
-              View All Features
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </SectionWrapper>
         </div>
       </section>
 
@@ -263,12 +274,12 @@ export default function Home() {
               { number: "4.9", label: "App Store Rating" },
               { number: "99%", label: "Customer Satisfaction" },
             ].map((stat, index) => (
-              <SectionWrapper key={index} delay={0.2 + index * 0.1}>
+              <BlurFade key={index} delay={0.2 + index * 0.1}>
                 <div className="p-8">
                   <div className="text-4xl md:text-5xl font-bold text-red-500 mb-2">{stat.number}</div>
                   <div className="text-white/70">{stat.label}</div>
                 </div>
-              </SectionWrapper>
+              </BlurFade>
             ))}
           </div>
         </div>
@@ -277,10 +288,10 @@ export default function Home() {
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20 md:py-32 bg-zinc-900">
         <div className="container mx-auto px-4">
-          <SectionWrapper className="text-center max-w-3xl mx-auto mb-16">
+          <BlurFade className="text-center max-w-3xl mx-auto mb-16" delay={0.2}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Users Say</h2>
             <p className="text-lg text-white/70">Join thousands of satisfied users who love our app</p>
-          </SectionWrapper>
+          </BlurFade>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -303,7 +314,7 @@ export default function Home() {
                   "The best scheduling app I've ever used. The team collaboration features are particularly impressive.",
               },
             ].map((testimonial, index) => (
-              <SectionWrapper
+              <BlurFade
                 key={index}
                 delay={0.2 + index * 0.1}
                 className={cn("bg-zinc-800 p-8 rounded-3xl", index === 1 ? "md:translate-y-8" : "")}
@@ -329,7 +340,7 @@ export default function Home() {
                     <div className="text-sm text-white/50">{testimonial.role}</div>
                   </div>
                 </div>
-              </SectionWrapper>
+              </BlurFade>
             ))}
           </div>
         </div>
@@ -338,10 +349,10 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="py-20 md:py-32 bg-black">
         <div className="container mx-auto px-4">
-          <SectionWrapper className="text-center max-w-3xl mx-auto mb-16">
+          <BlurFade className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
             <p className="text-lg text-white/70">Choose the plan that works best for you</p>
-          </SectionWrapper>
+          </BlurFade>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
@@ -375,7 +386,7 @@ export default function Home() {
                 ],
               },
             ].map((plan, index) => (
-              <SectionWrapper
+              <BlurFade
                 key={index}
                 delay={0.2 + index * 0.1}
                 className={cn(
@@ -406,78 +417,33 @@ export default function Home() {
                 >
                   Get Started
                 </Button>
-              </SectionWrapper>
+              </BlurFade>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-r from-red-500 to-red-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <SectionWrapper>
+      <section className="relative overflow-hidden py-20 md:py-32 text-white">
+        <Meteors number={50} />
+        <div className="container relative z-10 mx-auto px-4 text-center">
+          <BlurFade>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your scheduling?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">Download our app today and experience the difference.</p>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">Download our app today and invest in yourself.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-8">
+              <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-20 cursor-pointer">
                 Download Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="rounded-full border-white text-white hover:bg-white/10 h-12 px-8">
-                Contact Sales
-              </Button>
             </div>
-          </SectionWrapper>
+          </BlurFade>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="py-12 bg-zinc-950 text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="h-10 w-10 rounded-xl bg-red-500 flex items-center justify-center">
-                  <Calendar className="h-6 w-6 text-white" />
-                </div>
-                <span className="font-bold text-xl">Scheduler</span>
-              </div>
-              <p className="text-white/60">
-                The most intuitive scheduling app for your daily tasks, meetings, and events.
-              </p>
-            </div>
-
-            {[
-              {
-                title: "Product",
-                links: ["Features", "Pricing", "Integrations", "FAQ", "Roadmap"],
-              },
-              {
-                title: "Company",
-                links: ["About Us", "Careers", "Blog", "Press", "Contact"],
-              },
-              {
-                title: "Resources",
-                links: ["Documentation", "Tutorials", "Support", "API", "Community"],
-              },
-            ].map((column, index) => (
-              <div key={index}>
-                <h3 className="font-bold text-lg mb-4">{column.title}</h3>
-                <ul className="space-y-2">
-                  {column.links.map((link, i) => (
-                    <li key={i}>
-                      <a href="#" className="text-white/60 hover:text-white transition-colors">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-white/60 mb-4 md:mb-0">© 2023 Scheduler App. All rights reserved.</div>
+          <div className="px-20 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-white/60 mb-4 md:mb-0">© {new Date().getFullYear()} Workout Mate. All rights reserved.</div>
             <div className="flex gap-4">
               <a href="#" className="text-white/60 hover:text-white transition-colors">
                 Terms
@@ -490,7 +456,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
       </footer>
     </div>
   )
