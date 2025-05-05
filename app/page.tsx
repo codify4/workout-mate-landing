@@ -1,51 +1,34 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, BarChart, Book, BookOpenText, Brain, Calendar, CheckCircle2, ChevronRight, Clock, Dumbbell, Icon, Menu, MessageSquare, Star } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowRight, BarChart, BookOpenText, Brain, CheckCircle2, ChevronRight, Dumbbell, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Meteors } from "@/components/magicui/meteors"
-import { Marquee } from "@/components/magicui/marquee"
 import { TestimonialCard } from "@/components/testimonials"
 import ScrollAnimation from "@/components/scroll-animation"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLDivElement>(null)
 
-  // Main scroll progress for the entire page
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  // Specific scroll progress for the hero section
-  const { scrollYProgress: heroScrollProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  })
-
-  // Hero section animations
-  const heroTextOpacity = useTransform(heroScrollProgress, [0, 0.2], [1, 0])
-  const heroTextY = useTransform(heroScrollProgress, [0, 0.2], [0, -50])
-
-  // Phone animations
-  const phoneScale = useTransform(heroScrollProgress, [0, 0.3], [1, 0.8])
-  const phoneOpacity = useTransform(heroScrollProgress, [0, 0.3], [1, 0])
-  const phoneY = useTransform(heroScrollProgress, [0, 0.3], [0, 100])
-  const phoneRotate = useTransform(heroScrollProgress, [0, 0.3], [0, 10])
-
-  // Background circle animations
-  const circle1Scale = useTransform(heroScrollProgress, [0, 0.3], [1, 1.5])
-  const circle1Opacity = useTransform(heroScrollProgress, [0, 0.2], [1, 0])
-  const circle2Scale = useTransform(heroScrollProgress, [0, 0.3], [1, 2])
-  const circle2Opacity = useTransform(heroScrollProgress, [0, 0.2], [1, 0])
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    const element = document.getElementById(id)
+    if (element) {
+      setIsMenuOpen(false)
+      window.scrollTo({
+        top: element.offsetTop - 80, // Offset for the navbar height
+        behavior: "smooth",
+      })
+    }
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,13 +52,25 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-white/70 hover:text-white">
+            <Link
+              href="#features"
+              className="text-white/70 hover:text-white"
+              onClick={(e) => scrollToSection(e, "features")}
+            >
               Features
             </Link>
-            <Link href="#testimonials" className="text-white/70 hover:text-white">
+            <Link
+              href="#testimonials"
+              className="text-white/70 hover:text-white"
+              onClick={(e) => scrollToSection(e, "testimonials")}
+            >
               Testimonials
             </Link>
-            <Link href="#pricing" className="text-white/70 hover:text-white">
+            <Link
+              href="#pricing"
+              className="text-white/70 hover:text-white"
+              onClick={(e) => scrollToSection(e, "pricing")}
+            >
               Pricing
             </Link>
           </div>
@@ -94,13 +89,25 @@ export default function Home() {
             className="md:hidden bg-black border-t border-white/10"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link href="#features" className="text-white/70 hover:text-white py-2">
+              <Link
+                href="#features"
+                className="text-white/70 hover:text-white py-2"
+                onClick={(e) => scrollToSection(e, "features")}
+              >
                 Features
               </Link>
-              <Link href="#testimonials" className="text-white/70 hover:text-white py-2">
+              <Link
+                href="#testimonials"
+                className="text-white/70 hover:text-white py-2"
+                onClick={(e) => scrollToSection(e, "testimonials")}
+              >
                 Testimonials
               </Link>
-              <Link href="#pricing" className="text-white/70 hover:text-white py-2">
+              <Link
+                href="#pricing"
+                className="text-white/70 hover:text-white py-2"
+                onClick={(e) => scrollToSection(e, "pricing")}
+              >
                 Pricing
               </Link>
             </div>
@@ -136,7 +143,8 @@ export default function Home() {
                 imgSrc: "/stats.png",
                 icon: BarChart,
                 title: "Detailed Statistics",
-                description: "Analyze your performance with insightful stats, training focus charts, and a calendar view.",
+                description:
+                  "Analyze your performance with insightful stats, training focus charts, and a calendar view.",
               },
               {
                 imgSrc: "/chatbot.png",
@@ -145,10 +153,7 @@ export default function Home() {
                 description: "Get personalized advice on nutrition, workouts, and more from your AI mate.",
               },
             ].map((feature, index) => (
-              <BlurFade
-                key={index}
-                delay={0.2 + index * 0.1}
-              >
+              <BlurFade key={index} delay={0.2 + index * 0.1}>
                 <div
                   className={cn(
                     "flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-10",
@@ -157,11 +162,7 @@ export default function Home() {
                 >
                   <div className="w-full md:w-1/2 flex-shrink-0">
                     <div className="relative rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-[400px] h-[680px] max-w-xs mx-auto">
-                      <Image
-                        src={feature.imgSrc}
-                        alt={feature.title}
-                        fill
-                      />
+                      <Image src={feature.imgSrc || "/placeholder.svg"} alt={feature.title} fill />
                     </div>
                   </div>
                   <div className="w-full md:w-1/2 text-center md:text-left">
@@ -197,10 +198,12 @@ export default function Home() {
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-red-500/20 blur-[100px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-500/20 blur-[100px]" />
         </div>
-        
+
         <div className="container relative z-10 mx-auto px-4">
           <BlurFade className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+              Simple, Transparent Pricing
+            </h2>
             <p className="text-lg text-white/70">Choose the plan that works best for you</p>
           </BlurFade>
 
@@ -210,58 +213,54 @@ export default function Home() {
                 name: "Monthly",
                 price: "$9.99/mo",
                 popular: false,
-                features: [
-                ],
+                features: [],
               },
               {
                 name: "Yearly",
                 price: "$39.99/yr",
-                features: [
-                ],
+                features: [],
               },
             ].map((plan, index) => (
-              <BlurFade
-                key={index}
-                delay={0.2 + index * 0.1}
-              >
-                <motion.div 
+              <BlurFade key={index} delay={0.2 + index * 0.1}>
+                <motion.div
                   className={cn(
                     "bg-zinc-900/80 backdrop-blur-md p-8 rounded-3xl border relative overflow-hidden group transition-all duration-300",
-                    plan.popular 
-                      ? "border-red-500/50 border-2 shadow-[0_0_30px_rgba(239,68,68,0.15)] md:-translate-y-4" 
-                      : "border-zinc-700/50 hover:border-white/30"
+                    plan.popular
+                      ? "border-red-500/50 border-2 shadow-[0_0_30px_rgba(239,68,68,0.15)] md:-translate-y-4"
+                      : "border-zinc-700/50 hover:border-white/30",
                   )}
                   whileHover={{
                     scale: 1.02,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                 >
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-zinc-950/50 pointer-events-none" />
-                  
+
                   {/* Shine effect on hover */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[30deg] group-hover:animate-shine opacity-0 group-hover:opacity-100 transition-opacity" />
-                  
+
                   {plan.popular && (
                     <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full inline-block mb-4 shadow-lg">
                       Most Popular
                     </div>
                   )}
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <div className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">{plan.price}</div>
+                  <div className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                    {plan.price}
+                  </div>
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, i) => (
-                      <motion.li 
-                        key={i} 
+                      <motion.li
+                        key={i}
                         className="flex items-start gap-2"
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + (i * 0.1) }}
+                        transition={{ delay: 0.3 + i * 0.1 }}
                       >
-                        <CheckCircle2 className={cn(
-                          "h-5 w-5 shrink-0 mt-0.5",
-                          plan.popular ? "text-red-500" : "text-white"
-                        )} />
+                        <CheckCircle2
+                          className={cn("h-5 w-5 shrink-0 mt-0.5", plan.popular ? "text-red-500" : "text-white")}
+                        />
                         <span className="text-white/80">{feature}</span>
                       </motion.li>
                     ))}
@@ -269,9 +268,9 @@ export default function Home() {
                   <Button
                     className={cn(
                       "w-full rounded-full font-bold tracking-wide text-sm transition-all duration-300 relative overflow-hidden cursor-pointer py-6",
-                      plan.popular 
-                        ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20" 
-                        : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20"
+                      plan.popular
+                        ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20"
+                        : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20",
                     )}
                   >
                     Download App
@@ -303,20 +302,11 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-12 bg-black text-white">
-          <div className="px-20 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-white/60 mb-4 md:mb-0">© {new Date().getFullYear()} Workout Mate. All rights reserved.</div>
-            <div className="flex gap-4">
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Terms
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Privacy
-              </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
-                Cookies
-              </a>
-            </div>
+        <div className="px-20 flex flex-col justify-between items-center">
+          <div className="text-white/60 mb-4 md:mb-0">
+            © {new Date().getFullYear()} Workout Mate. All rights reserved.
           </div>
+        </div>
       </footer>
     </div>
   )
