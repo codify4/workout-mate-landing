@@ -289,7 +289,7 @@ export default function Home() {
         <Meteors number={50} />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <BlurFade>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your scheduling?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your body?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">Download our app today and invest in yourself.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-20 cursor-pointer">
