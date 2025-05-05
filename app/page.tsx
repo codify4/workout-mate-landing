@@ -12,6 +12,7 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Meteors } from "@/components/magicui/meteors"
 import { Marquee } from "@/components/magicui/marquee"
 import { TestimonialCard } from "@/components/testimonials"
+import ScrollAnimation from "@/components/scroll-animation"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -63,9 +64,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center">
-              <Dumbbell className="h-6 w-6 text-black" />
-            </div>
+            <Image src="/logo.png" alt="Logo" width={50} height={50} />
             <span className="font-bold text-xl">Workout Mate</span>
           </div>
 
@@ -79,7 +78,6 @@ export default function Home() {
             <Link href="#pricing" className="text-white/70 hover:text-white">
               Pricing
             </Link>
-            <Button className="rounded-full bg-white text-black hover:bg-white/90">Download</Button>
           </div>
 
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -105,136 +103,12 @@ export default function Home() {
               <Link href="#pricing" className="text-white/70 hover:text-white py-2">
                 Pricing
               </Link>
-              <Button className="rounded-full w-full bg-white text-black hover:bg-white/90">Download</Button>
             </div>
           </motion.div>
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative flex items-center overflow-hidden py-10">
-        {/* Decorative circles */}
-        <motion.div
-          style={{ scale: circle1Scale, opacity: circle1Opacity }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-red-500/10 blur-3xl"
-        />
-        <motion.div
-          style={{ scale: circle2Scale, opacity: circle2Opacity }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-500/10 blur-3xl"
-        />
-
-        <div className="container mx-auto px-4 relative z-10 pt-32">
-          <div className="flex flex-col items-center justify-center gap-16 md:gap-24 w-10/12 mx-auto">
-            {/* Hero Text */}
-            <motion.div style={{ opacity: heroTextOpacity, y: heroTextY }} className="flex flex-col items-center justify-center text-center md:text-left">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl md:text-6xl font-bold mb-6"
-              >
-                Manage your schedule like never before
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-xl text-white/80 mb-8"
-              >
-                The most intuitive and powerful scheduling app for your daily tasks, meetings, and events.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-              >
-                <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-8">
-                  Download App
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            {/* Phone Mockup */}
-            <motion.div
-              style={{
-                scale: phoneScale,
-                opacity: phoneOpacity,
-                y: phoneY,
-                rotateZ: phoneRotate,
-              }}
-              className="relative flex flex-row gap-5 mx-auto md:mx-0 md:ml-auto w-full"
-            >
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
-                <Image
-                  src="/home.png"
-                  alt="App Screenshot"
-                  width={250}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
-                <Image
-                  src="/exercise-library.png"
-                  alt="App Screenshot"
-                  width={250}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
-                <Image
-                  src="/empty-chatbot.png"
-                  alt="App Screenshot"
-                  width={250}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
-                <Image
-                  src="/finished-workouts.png"
-                  alt="App Screenshot"
-                  width={250}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-zinc-800 shadow-2xl w-full">
-                <Image
-                  src="/workout-screen.png"
-                  alt="App Screenshot"
-                  width={250}
-                  height={500}
-                  className="w-full h-auto"
-                />
-              </div>
-
-              {/* Phone decorative elements */}
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-red-500/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl"></div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-              className="w-1 h-2 bg-white rounded-full"
-            />
-          </motion.div>
-          <span className="text-sm text-white/50 mt-2">Scroll to explore</span>
-        </div>
-      </section>
+      <ScrollAnimation />
 
       {/* Features Section */}
       <section id="features" className="py-20 md:py-32 bg-black">
@@ -277,7 +151,7 @@ export default function Home() {
               >
                 <div
                   className={cn(
-                    "flex flex-col md:flex-row items-center gap-8 md:gap-12",
+                    "flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-10",
                     index % 2 === 1 ? "md:flex-row-reverse" : "",
                   )}
                 >
@@ -428,7 +302,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-zinc-950 text-white">
+      <footer className="py-12 bg-black text-white">
           <div className="px-20 flex flex-col md:flex-row justify-between items-center">
             <div className="text-white/60 mb-4 md:mb-0">© {new Date().getFullYear()} Workout Mate. All rights reserved.</div>
             <div className="flex gap-4">

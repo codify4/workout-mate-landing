@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Workout Mate - Mobile App",
-  description: "The most intuitive and powerful fitness app to help you achieve your dream body.",
+  description: "An AI-powered personal trainer that helps you achieve your dream physique.",
 }
 
 export default function RootLayout({
