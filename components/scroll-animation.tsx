@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function ScrollAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -79,10 +80,12 @@ export default function ScrollAnimation() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-6 w-[250px]">
-                  Download App
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
+                  <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-6 w-[250px]">
+                    Join Waitlist
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
 

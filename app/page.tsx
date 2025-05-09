@@ -202,7 +202,7 @@ export default function Home() {
         <div className="container relative z-10 mx-auto px-4">
           <BlurFade className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-              Simple, Transparent Pricing
+              Very Simple Pricing
             </h2>
             <p className="text-lg text-white/70">Choose the plan that works best for you</p>
           </BlurFade>
@@ -265,17 +265,19 @@ export default function Home() {
                       </motion.li>
                     ))}
                   </ul>
-                  <Button
-                    className={cn(
-                      "w-full rounded-full font-bold tracking-wide text-sm transition-all duration-300 relative overflow-hidden cursor-pointer py-6",
-                      plan.popular
-                        ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20"
-                        : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20",
-                    )}
-                  >
-                    Download App
-                    <ChevronRight className="ml-1 h-4 w-4 inline animate-pulse" />
-                  </Button>
+                  <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
+                    <Button
+                      className={cn(
+                        "w-full rounded-full font-bold tracking-wide text-sm transition-all duration-300 relative overflow-hidden cursor-pointer py-6",
+                        plan.popular
+                          ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20"
+                          : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20",
+                      )}
+                    >
+                      Join Waitlist
+                      <ChevronRight className="ml-1 h-4 w-4 inline animate-pulse" />
+                    </Button>
+                  </Link>
                 </motion.div>
               </BlurFade>
             ))}
@@ -291,10 +293,12 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your body?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">Download our app today and invest in yourself.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-20 cursor-pointer">
-                Download Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
+                <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-20 cursor-pointer">
+                  Join Waitlist
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </BlurFade>
         </div>
