@@ -40,7 +40,7 @@ export default function ScrollAnimation() {
 
   return (
     <div ref={containerRef} className="bg-black text-white">
-      <section ref={heroRef} className="relative flex items-center overflow-hidden py-50">
+      <section ref={heroRef} className="relative flex items-center overflow-hidden py-24 lg:py-50">
         {/* Decorative circles */}
         <motion.div
           style={{ scale: circle1Scale, opacity: circle1Opacity }}
