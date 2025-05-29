@@ -287,7 +287,7 @@ export default function Home() {
 
       <section className="flex items-center justify-center py-20 md:py-32 text-white">
         <BlurFade className="w-full flex justify-center items-center">
-          <video src="/vid.mp4" autoPlay muted loop className="w-2/3 h-[500px] rounded-lg shadow-lg" />
+          <video src="/vid.mp4" autoPlay muted loop className="w-full lg:w-2/3 h-[500px] rounded-lg shadow-lg" />
         </BlurFade>
       </section>
 
