@@ -285,6 +285,12 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="flex items-center justify-center py-20 md:py-32 text-white">
+        <BlurFade className="w-full flex justify-center items-center">
+          <video src="/vid.mp4" autoPlay muted loop className="w-2/3 h-[500px] rounded-lg shadow-lg" />
+        </BlurFade>
+      </section>
+
       {/* CTA Section */}
       <section className="relative overflow-hidden py-20 md:py-32 text-white">
         <Meteors number={50} />
