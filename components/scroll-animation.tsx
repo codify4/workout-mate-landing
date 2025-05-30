@@ -78,7 +78,7 @@ export default function ScrollAnimation() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Waitlist className="hidden md:flex rounded-full bg-white text-black hover:bg-white/90 py-6 px-10 w-[170px] transition-all duration-300"/>
+                <Waitlist className="flex rounded-full bg-white text-black hover:bg-white/90 py-6 px-10 w-[170px] transition-all duration-300"/>
               </motion.div>
             </motion.div>
 
