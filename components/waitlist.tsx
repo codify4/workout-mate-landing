@@ -54,7 +54,7 @@ export function Waitlist({ className }: { className?: string }) {
                 <DialogHeader>
                     <DialogTitle className="text-white">Join our waitlist</DialogTitle>
                     <DialogDescription className="text-white/70">
-                        We&ll let you know when we're ready to launch!
+                        We&apos;ll let you know when we&apos;re ready to launch!
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-full gap-2">
