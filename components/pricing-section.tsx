@@ -1,12 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { pricing } from "@/constants/pricing"
+import { Waitlist } from "./waitlist"
 
 const PricingSection = () => {
     return (
@@ -71,19 +70,13 @@ const PricingSection = () => {
                                     </motion.li>
                                 ))}
                             </ul>
-                            <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
-                                <Button
-                                    className={cn(
-                                        "w-full rounded-full font-bold tracking-wide text-sm transition-all duration-300 relative overflow-hidden cursor-pointer py-6",
-                                        plan.popular
-                                            ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20"
-                                            : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20",
-                                    )}
-                                >
-                                    Join Waitlist
-                                    <ChevronRight className="ml-1 h-4 w-4 inline animate-pulse" />
-                                </Button>
-                            </Link>
+                            <Waitlist className={cn(
+                                    "w-full rounded-full font-bold tracking-wide text-sm transition-all duration-300 relative overflow-hidden cursor-pointer py-6",
+                                    plan.popular
+                                        ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-600/20"
+                                        : "bg-gradient-to-r from-white to-white/60 text-black shadow-lg shadow-white/20",
+                                )} 
+                            />
                         </motion.div>
                     </BlurFade>
                 ))}

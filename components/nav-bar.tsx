@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button } from './ui/button'
 import { Menu } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Waitlist } from './waitlist'
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -70,11 +70,7 @@ const NavBar = () => {
                     </Link>
                 </div>
     
-                <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
-                    <Button className="hidden md:flex rounded-full bg-white text-black hover:bg-white/90 py-6 px-10 w-[170px] transition-all duration-300">
-                        Join Waitlist
-                    </Button>
-                </Link>
+                <Waitlist className="hidden md:flex rounded-full bg-white text-black hover:bg-white/90 py-6 px-10 w-[170px] transition-all duration-300" />
     
                 <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <Menu className="h-6 w-6 text-white" />

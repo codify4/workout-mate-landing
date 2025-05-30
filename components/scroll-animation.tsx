@@ -3,9 +3,7 @@
 import { useRef } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Waitlist } from "./waitlist"
 
 export default function ScrollAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -80,12 +78,7 @@ export default function ScrollAnimation() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Link href="https://launch.drip.ma/waitlist/workout-mate" target="_blank">
-                  <Button className="rounded-full bg-white text-black hover:bg-white/90 h-12 px-6 w-[250px]">
-                    Join Waitlist
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                <Waitlist className="hidden md:flex rounded-full bg-white text-black hover:bg-white/90 py-6 px-10 w-[170px] transition-all duration-300"/>
               </motion.div>
             </motion.div>
 
